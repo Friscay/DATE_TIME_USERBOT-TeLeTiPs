@@ -6,6 +6,7 @@
 
 from pyrogram import Client, filters
 from pyrogram.errors import FloodWait
+from lists_teletips.randompp import *
 import datetime
 import pytz
 import asyncio
