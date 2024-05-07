@@ -13,27 +13,31 @@ import asyncio
 import random
 import os
 
-Date_Time_Userbot_teletips=Client(
-    api_id = int(os.environ["API_ID"]),
-    api_hash = os.environ["API_HASH"],
-    session_name = os.environ["SESSION_NAME"]
-)
+API_ID = int(os.environ["API_ID"])
+API_HASH = os.environ["API_HASH"]
+SESSION_NAME = os.environ["SESSION_NAME"]
+TIME_ZONE = os.environ["TIME_ZONE"]
 
-Time_Zone = os.environ["TIME_ZONE"]
+Date_Time_Userbot = Client(
+    name="datetime",
+    api_id=API_ID,
+    api_hash=API_HASH,
+    session_string=SESSION_NAME,
+)
 
 async def main_teletips():
     try:
         while True:
-            if Date_Time_Userbot_teletips.is_connected:
+            if Date_Time_Userbot.is_connected:
                 pp = random.choice(randompp)
-                TimeZone_teletips = datetime.datetime.now(pytz.timezone(f"{Time_Zone}"))
+                TimeZone_teletips = datetime.datetime.now(pytz.timezone(f"{TIME_ZONE}"))
                 Time_teletips = TimeZone_teletips.strftime("%I:%M %p")
                 Date_teletips = TimeZone_teletips.strftime("%b %d")
-                await Date_Time_Userbot_teletips.set_profile_photo(pp)
-                me = await Date_Time_Userbot_teletips.get_me()
-                photos = await Date_Time_Userbot_teletips.get_profile_photos("me")
+                await Date_Time_Userbot.set_profile_photo(pp)
+                me = await Date_Time_Userbot.get_me()
+                photos = await Date_Time_Userbot.get_profile_photos("me")
                 try:
-                    await Date_Time_Userbot_teletips.delete_profile_photos(photos[1].file_id)
+                    await Date_Time_Userbot.delete_profile_photos(photos[1].file_id)
                 except Exception:
                     pass        
                 print("Profile Updated!")
@@ -42,7 +46,7 @@ async def main_teletips():
         await asyncio.sleep(e.x)         
 
 print("DATE TIME USERBOT IS ALIVE!")
-asyncio.ensure_future(main_teletips())
-Date_Time_Userbot_teletips.run()
+asyncio.create_task(main_teletips())
+Date_Time_Userbot.run()
 
 #Copyright ©️ 2021 TeLe TiPs. All Rights Reserved
