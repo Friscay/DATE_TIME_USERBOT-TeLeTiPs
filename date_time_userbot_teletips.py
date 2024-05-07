@@ -30,7 +30,7 @@ async def main_teletips():
         while True:
             if Date_Time_Userbot.is_connected:
                 pp = random.choice(randompp)
-                TimeZone_teletips = datetime.datetime.now(pytz.timezone(f"{TIME_ZONE}"))
+                TimeZone_teletips = datetime.datetime.now(pytz.timezone(Time_Zone))
                 Time_teletips = TimeZone_teletips.strftime("%I:%M %p")
                 Date_teletips = TimeZone_teletips.strftime("%b %d")
                 await Date_Time_Userbot.set_profile_photo(pp)
@@ -46,7 +46,6 @@ async def main_teletips():
         await asyncio.sleep(e.x)         
 
 print("DATE TIME USERBOT IS ALIVE!")
-asyncio.ensure_future(main_teletips())
-Date_Time_Userbot.run()
+asyncio.run(main_teletips())
 
 #Copyright ©️ 2021 TeLe TiPs. All Rights Reserved
