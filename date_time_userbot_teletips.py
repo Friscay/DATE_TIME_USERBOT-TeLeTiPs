@@ -50,7 +50,7 @@ async def main_teletips():
 
 print("DATE TIME USERBOT IS ALIVE!")
 asyncio.set_event_loop(event_loop)
-event_loop.run_until_complete(main())
+event_loop.run_until_complete(main_teletips())
 Date_Time_Userbot.run()
 
 #Copyright ©️ 2021 TeLe TiPs. All Rights Reserved
