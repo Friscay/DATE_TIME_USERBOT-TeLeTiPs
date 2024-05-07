@@ -16,17 +16,14 @@ import os
 loop = asyncio.get_event_loop_policy()
 event_loop = loop.get_event_loop()
 
-API_ID = int(os.environ["API_ID"])
-API_HASH = os.environ["API_HASH"]
-SESSION_NAME = os.environ["SESSION_NAME"]
-TIME_ZONE = os.environ["TIME_ZONE"]
-
 Date_Time_Userbot = Client(
-    name="datetime",
-    api_id=API_ID,
-    api_hash=API_HASH,
-    session_string=SESSION_NAME,
+    name = "date_time_userbot_teletips",
+    api_id = int(os.environ["API_ID"]),
+    api_hash = os.environ["API_HASH"],
+    session_string = os.environ["SESSION_STRING"]
 )
+
+Time_Zone = os.environ["TIME_ZONE"]
 
 async def main_teletips():
     try:
@@ -49,8 +46,7 @@ async def main_teletips():
         await asyncio.sleep(e.x)         
 
 print("DATE TIME USERBOT IS ALIVE!")
-asyncio.set_event_loop(event_loop)
-event_loop.run_until_complete(main_teletips())
+asyncio.ensure_future(main_teletips())
 Date_Time_Userbot.run()
 
 #Copyright ©️ 2021 TeLe TiPs. All Rights Reserved
