@@ -13,6 +13,9 @@ import asyncio
 import random
 import os
 
+loop = asyncio.get_event_loop_policy()
+event_loop = loop.get_event_loop()
+
 API_ID = int(os.environ["API_ID"])
 API_HASH = os.environ["API_HASH"]
 SESSION_NAME = os.environ["SESSION_NAME"]
@@ -46,7 +49,8 @@ async def main_teletips():
         await asyncio.sleep(e.x)         
 
 print("DATE TIME USERBOT IS ALIVE!")
-asyncio.create_task(main_teletips())
+asyncio.set_event_loop(event_loop)
+event_loop.run_until_complete(main())
 Date_Time_Userbot.run()
 
 #Copyright ©️ 2021 TeLe TiPs. All Rights Reserved
