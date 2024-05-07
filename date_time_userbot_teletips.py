@@ -27,23 +27,22 @@ Time_Zone = os.environ["TIME_ZONE"]
 
 async def main_teletips():
     try:
-        while True:
-            if Date_Time_Userbot.is_connected:
-                pp = random.choice(randompp)
-                TimeZone_teletips = datetime.datetime.now(pytz.timezone(Time_Zone))
-                Time_teletips = TimeZone_teletips.strftime("%I:%M %p")
-                Date_teletips = TimeZone_teletips.strftime("%b %d")
-                await Date_Time_Userbot.set_profile_photo(pp)
-                me = await Date_Time_Userbot.get_me()
-                photos = await Date_Time_Userbot.get_profile_photos("me")
-                try:
-                    await Date_Time_Userbot.delete_profile_photos(photos[1].file_id)
-                except Exception:
-                    pass        
-                print("Profile Updated!")
-            await asyncio.sleep(60)     
-    except FloodWait as e:
-        await asyncio.sleep(e.x)         
+        if Date_Time_Userbot.is_connected:
+            pp = random.choice(randompp)
+            TimeZone_teletips = datetime.datetime.now(pytz.timezone(Time_Zone))
+            Time_teletips = TimeZone_teletips.strftime("%I:%M %p")
+            Date_teletips = TimeZone_teletips.strftime("%b %d")
+            await Date_Time_Userbot.set_profile_photo(pp)
+            me = await Date_Time_Userbot.get_me()
+            photos = await Date_Time_Userbot.get_profile_photos("me")
+            try:
+                await Date_Time_Userbot.delete_profile_photos(photos[1].file_id)
+            except Exception:
+                pass        
+            print("Profile Updated!")
+        await asyncio.sleep(60)     
+except FloodWait as e:
+    await asyncio.sleep(e.x)         
 
 print("DATE TIME USERBOT IS ALIVE!")
 asyncio.run(main_teletips())
