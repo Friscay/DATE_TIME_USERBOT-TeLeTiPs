@@ -25,7 +25,7 @@ Time_Zone = os.environ["TIME_ZONE"]
 async def main_teletips():
     try:
         while True:
-            if Date_Time_Userbot_teletips.is_connected:
+            if Date_Time_Userbot.is_connected:
                 TimeZone_teletips = datetime.datetime.now(pytz.timezone(f"{Time_Zone}"))
                 Time_teletips = TimeZone_teletips.strftime("%I:%M %p")
                 Date_teletips = TimeZone_teletips.strftime("%b %d")
