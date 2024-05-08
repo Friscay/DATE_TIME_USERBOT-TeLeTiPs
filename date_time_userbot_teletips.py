@@ -13,9 +13,6 @@ import asyncio
 import random
 import os
 
-loop = asyncio.get_event_loop_policy()
-event_loop = loop.get_event_loop()
-
 Date_Time_Userbot = Client(
     name = "date_time_userbot_teletips",
     api_id = int(os.environ["API_ID"]),
@@ -27,22 +24,22 @@ Time_Zone = os.environ["TIME_ZONE"]
 
 async def main_teletips():
     try:
-        if Date_Time_Userbot.is_connected:
-            pp = random.choice(randompp)
-            TimeZone_teletips = datetime.datetime.now(pytz.timezone(Time_Zone))
-            Time_teletips = TimeZone_teletips.strftime("%I:%M %p")
-            Date_teletips = TimeZone_teletips.strftime("%b %d")
-            await Date_Time_Userbot.set_profile_photo(pp)
-            me = await Date_Time_Userbot.get_me()
-            photos = await Date_Time_Userbot.get_profile_photos("me")
-            try:
-                await Date_Time_Userbot.delete_profile_photos(photos[1].file_id)
-            except Exception:
-                pass        
-            print("Profile Updated!")
-        await asyncio.sleep(60)     
-except FloodWait as e:
-    await asyncio.sleep(e.x)         
+        while True:
+            if Date_Time_Userbot_teletips.is_connected:
+                TimeZone_teletips = datetime.datetime.now(pytz.timezone(f"{Time_Zone}"))
+                Time_teletips = TimeZone_teletips.strftime("%I:%M %p")
+                Date_teletips = TimeZone_teletips.strftime("%b %d")
+                await Date_Time_Userbot.set_profile_photo(pp)
+                me = await Date_Time_Userbot.get_me()
+                photos = await Date_Time_Userbot.get_profile_photos("me")
+                try:
+                    await Date_Time_Userbot.delete_profile_photos(photos[1].file_id)
+                except Exception:
+                    pass        
+                print("Profile Updated!")
+            await asyncio.sleep(60)     
+    except FloodWait as e:
+        await asyncio.sleep(e.x)         
 
 print("DATE TIME USERBOT IS ALIVE!")
 asyncio.run(main_teletips())
