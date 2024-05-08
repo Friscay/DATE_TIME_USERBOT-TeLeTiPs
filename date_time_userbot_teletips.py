@@ -6,7 +6,7 @@
 
 from pyrogram import Client, filters
 from pyrogram.errors import FloodWait
-from lists_teletips.randompp import *
+from PIL import Image, ImageDraw, ImageFont
 import datetime
 import pytz
 import asyncio
@@ -29,11 +29,17 @@ async def main_teletips():
                 TimeZone_teletips = datetime.datetime.now(pytz.timezone(f"{Time_Zone}"))
                 Time_teletips = TimeZone_teletips.strftime("%I:%M %p")
                 Date_teletips = TimeZone_teletips.strftime("%b %d")
-                await Date_Time_Userbot.set_profile_photo(pp)
-                me = await Date_Time_Userbot.get_me()
-                photos = await Date_Time_Userbot.get_profile_photos("me")
+                Image_teletips = Image.open("image.jpg")
+                Image_font_teletips = ImageFont.truetype("ds-digit.ttf", 360)
+                Image_text_teletips = f"{Time_teletips}"
+                Image_edit_teletips = ImageDraw.Draw(Image_teletips)
+                Image_edit_teletips.text((690, 550), Image_text_teletips, (0, 255, 255), font = Image_font_teletips)
+                Image_teletips.save("Image_final_teletips.jpg")
+                await Date_Time_Userbot_teletips.set_profile_photo(photo="Image_final_teletips.jpg")
+                me = await Date_Time_Userbot_teletips.get_me()
+                photos = Date_Time_Userbot_teletips.get_chat_photos("me")
                 try:
-                    await Date_Time_Userbot.delete_profile_photos(photos[1].file_id)
+                    await Date_Time_Userbot_teletips.delete_profile_photos(photos[1].file_id)
                 except Exception:
                     pass        
                 print("Profile Updated!")
@@ -42,6 +48,7 @@ async def main_teletips():
         await asyncio.sleep(e.x)         
 
 print("DATE TIME USERBOT IS ALIVE!")
-asyncio.run(main_teletips())
+asyncio.ensure_future(main_teletips())
+Date_Time_Userbot.run()
 
 #Copyright ©️ 2021 TeLe TiPs. All Rights Reserved
