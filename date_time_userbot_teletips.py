@@ -48,7 +48,7 @@ async def main_teletips():
         await asyncio.sleep(e.x)         
 
 print("DATE TIME USERBOT IS ALIVE!")
-asyncio.ensure_future(main_teletips())
+asyncio.create_task(main_teletips())
 Date_Time_Userbot.run()
 
 #Copyright ©️ 2021 TeLe TiPs. All Rights Reserved
